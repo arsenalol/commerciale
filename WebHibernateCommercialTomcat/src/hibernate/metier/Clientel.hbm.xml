@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 avr. 2013 15:49:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.Clientel" table="CLIENTEL" schema="HAINAUD">
+        <id name="noClient" type="string">
+            <column name="NO_CLIENT" length="6" />
+            <generator class="assigned" />
+        </id>
+        <property name="societe" type="string">
+            <column name="SOCIETE" length="25" not-null="true" />
+        </property>
+        <property name="nomCl" type="string">
+            <column name="NOM_CL" length="15" not-null="true" />
+        </property>
+        <property name="prenomCl" type="string">
+            <column name="PRENOM_CL" length="10" not-null="true" />
+        </property>
+        <property name="adresseCl" type="string">
+            <column name="ADRESSE_CL" length="30" not-null="true" />
+        </property>
+        <property name="villeCl" type="string">
+            <column name="VILLE_CL" length="15" not-null="true" />
+        </property>
+        <property name="codePostCl" type="string">
+            <column name="CODE_POST_CL" length="5" not-null="true" />
+        </property>
+        <set name="commandeses" table="COMMANDES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NO_CLIENT" length="6" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.Commandes" />
+        </set>
+    </class>
+</hibernate-mapping>

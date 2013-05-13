@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 avr. 2013 15:49:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.Vendeur" table="VENDEUR" schema="HAINAUD">
+        <id name="noVendeur" type="string">
+            <column name="NO_VENDEUR" length="6" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vendeur" class="hibernate.metier.Vendeur" fetch="select">
+            <column name="NO_VEND_CHEF_EQ" length="6" not-null="true" />
+        </many-to-one>
+        <property name="nomVend" type="string">
+            <column name="NOM_VEND" length="15" not-null="true" />
+        </property>
+        <property name="prenomVend" type="string">
+            <column name="PRENOM_VEND" length="10" not-null="true" />
+        </property>
+        <property name="dateEmbau" type="date">
+            <column name="DATE_EMBAU" length="7" not-null="true" />
+        </property>
+        <property name="villeVend" type="string">
+            <column name="VILLE_VEND" length="15" not-null="true" />
+        </property>
+        <property name="salaireVend" type="big_decimal">
+            <column name="SALAIRE_VEND" precision="8" not-null="true" />
+        </property>
+        <property name="commission" type="big_decimal">
+            <column name="COMMISSION" precision="6" not-null="true" />
+        </property>
+        <set name="commandeses" table="COMMANDES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NO_VENDEUR" length="6" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.Commandes" />
+        </set>
+        <set name="vendeurs" table="VENDEUR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NO_VEND_CHEF_EQ" length="6" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.Vendeur" />
+        </set>
+    </class>
+</hibernate-mapping>

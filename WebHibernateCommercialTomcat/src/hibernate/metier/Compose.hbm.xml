@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 avr. 2013 15:49:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.Compose" table="COMPOSE" schema="HAINAUD">
+        <composite-id name="id" class="hibernate.metier.ComposeId">
+            <key-property name="noCompose" type="string">
+                <column name="NO_COMPOSE" length="6" />
+            </key-property>
+            <key-property name="noComposant" type="string">
+                <column name="NO_COMPOSANT" length="6" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="articlesByNoCompose" class="hibernate.metier.Articles" update="false" insert="false" fetch="select">
+            <column name="NO_COMPOSE" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="articlesByNoComposant" class="hibernate.metier.Articles" update="false" insert="false" fetch="select">
+            <column name="NO_COMPOSANT" length="6" not-null="true" />
+        </many-to-one>
+        <property name="qteComposant" type="big_decimal">
+            <column name="QTE_COMPOSANT" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

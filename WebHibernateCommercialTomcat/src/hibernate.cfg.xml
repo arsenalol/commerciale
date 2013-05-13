@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="SessionFactory">
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.password">hainaud</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@epulgold.univ-lyon1.fr:1521:oraepul</property>
+        <property name="hibernate.connection.username">hainaud</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping resource="hibernate/metier/Articles.hbm.xml" />
+        <mapping resource="hibernate/metier/Commandes.hbm.xml" />
+        <mapping resource="hibernate/metier/Clientel.hbm.xml" />
+        <mapping resource="hibernate/metier/Vendeur.hbm.xml" />
+        <mapping resource="hibernate/metier/DetailCde.hbm.xml" />
+        <mapping resource="hibernate/metier/Compose.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="HAINAUD" match-name="ARTICLES"/>
+  <table-filter match-schema="HAINAUD" match-name="CLIENTEL"/>
+  <table-filter match-schema="HAINAUD" match-name="COMMANDES"/>
+  <table-filter match-schema="HAINAUD" match-name="COMPOSE"/>
+  <table-filter match-schema="HAINAUD" match-name="DETAIL_CDE"/>
+  <table-filter match-schema="HAINAUD" match-name="VENDEUR"/>
+</hibernate-reverse-engineering>

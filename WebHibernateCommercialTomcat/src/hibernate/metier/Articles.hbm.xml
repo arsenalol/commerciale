@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 avr. 2013 15:49:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.Articles" table="ARTICLES" schema="HAINAUD">
+        <id name="noArticle" type="string">
+            <column name="NO_ARTICLE" length="6" />
+            <generator class="assigned" />
+        </id>
+        <property name="libArticle" type="string">
+            <column name="LIB_ARTICLE" length="30" not-null="true" />
+        </property>
+        <property name="qteDispo" type="big_decimal">
+            <column name="QTE_DISPO" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="villeArt" type="string">
+            <column name="VILLE_ART" length="15" not-null="true" />
+        </property>
+        <property name="prixArt" type="big_decimal">
+            <column name="PRIX_ART" precision="8" not-null="true" />
+        </property>
+        <property name="interrompu" type="char">
+            <column name="INTERROMPU" length="1" not-null="true" />
+        </property>
+        <set name="composesForNoComposant" table="COMPOSE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NO_COMPOSANT" length="6" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.Compose" />
+        </set>
+        <set name="composesForNoCompose" table="COMPOSE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NO_COMPOSE" length="6" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.Compose" />
+        </set>
+        <set name="detailCdes" table="DETAIL_CDE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NO_ARTICLE" length="6" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.DetailCde" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 avr. 2013 15:49:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.Commandes" table="COMMANDES" schema="HAINAUD">
+        <id name="noCommand" type="string">
+            <column name="NO_COMMAND" length="6" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vendeur" class="hibernate.metier.Vendeur" fetch="select">
+            <column name="NO_VENDEUR" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="clientel" class="hibernate.metier.Clientel" fetch="select">
+            <column name="NO_CLIENT" length="6" not-null="true" />
+        </many-to-one>
+        <property name="dateCde" type="date">
+            <column name="DATE_CDE" length="7" not-null="true" />
+        </property>
+        <property name="facture" type="char">
+            <column name="FACTURE" length="1" not-null="true" />
+        </property>
+        <set name="detailCdes" cascade="delete" table="DETAIL_CDE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NO_COMMAND" length="6" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.DetailCde" />
+        </set>
+    </class>
+</hibernate-mapping>

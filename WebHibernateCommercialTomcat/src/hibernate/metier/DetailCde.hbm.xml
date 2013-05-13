@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 avr. 2013 15:49:56 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.DetailCde" table="DETAIL_CDE" schema="HAINAUD">
+        <composite-id name="id" class="hibernate.metier.DetailCdeId">
+            <key-property name="noCommand" type="string">
+                <column name="NO_COMMAND" length="6" />
+            </key-property>
+            <key-property name="noArticle" type="string">
+                <column name="NO_ARTICLE" length="6" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="commandes" class="hibernate.metier.Commandes" update="false" insert="false" fetch="select">
+            <column name="NO_COMMAND" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="articles" class="hibernate.metier.Articles" update="false" insert="false" fetch="select">
+            <column name="NO_ARTICLE" length="6" not-null="true" />
+        </many-to-one>
+        <property name="qteCdee" type="big_decimal">
+            <column name="QTE_CDEE" precision="22" scale="0" />
+        </property>
+        <property name="livree" type="java.lang.Character">
+            <column name="LIVREE" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>
