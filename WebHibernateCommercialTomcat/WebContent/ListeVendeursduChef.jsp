@@ -15,6 +15,7 @@
 
 <body  onLoad="Chargement();">
  <jsp:include page="includes/header.jsp" />
+ <section id="main" class="column">
 	<article class="module width_3_quarter">
 		<header><h3 class="tabs_involved"> Les chefs d'équipe des vendeurs</h3>
   </header>
@@ -47,5 +48,6 @@
 	</form>
 		</div>
 		</article>
+		</section>
 </body>
 </html>

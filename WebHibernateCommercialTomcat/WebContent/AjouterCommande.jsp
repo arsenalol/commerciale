@@ -2,13 +2,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="includes/header.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script language=javascript>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script language=javascript type="text/javascript">
   function verif()
   {
   if(document.getElementById("id").value == "" || 
      document.getElementById("noClient").value == "" || 
      document.getElementById("noVendeur").value == "" ||
-     document.getElementById("datecde").value == "") ||
+     document.getElementById("datecde").value == "" ||
 	   document.getElementById("facture").value == "")
        { alert("Un des champs n'est pas rempli !"); 
          return false; 
@@ -22,6 +25,7 @@
       if (obj.value!='')
          alert('Erreur signalée  : "'+obj.value+"'");
   }
+	
   </script>
   <body  onLoad="Chargement();">
 <section id="main" class="column">
@@ -40,7 +44,7 @@
 
 				<fieldset>
 					<label>Date de commande</label>
-					<input type="text" name="datecde" value="" id="dateCde" />
+					<input type="text" name="datecde" value="" id="datepicker" READONLY/>
 				</fieldset>
 				<fieldset>
 					<label>Facture</label>

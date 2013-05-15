@@ -213,13 +213,15 @@ public class Controleur extends HttpServlet {
              //sauvegarde de la commande       
             if(request.getParameter("type").equals("modif"))
               { destinationPage = "/Controleur?action=voirlescommandes";
+              request.setAttribute("message","modif");
             	unecommande.modifier(unecommande);
             	request.setAttribute("mescommandes", unecommande.getTouteslesCommandes());         
             	
                }
              else	
             	  if(request.getParameter("type").equals("ajout"))
-                  {    	 destinationPage = "/index.jsp";	 
+                  {    	 destinationPage = "/index.jsp";
+                  request.setAttribute("message","ajout");
             		  unecommande.ajouter(unecommande); 
             		  request.setAttribute("mescommandes",unecommande.getTouteslesCommandes());        
             	      
@@ -240,6 +242,7 @@ public class Controleur extends HttpServlet {
     
       else if(EFFACER_COMMANDE.equals(actionName))
       {
+    	  
           //recuperation de la liste des id a effacer
           String[] ids = request.getParameterValues("id");
           //effacement de la liste des id
@@ -248,6 +251,7 @@ public class Controleur extends HttpServlet {
             {   unecommande.effacer(ids); }
           //preparation de la liste
           request.setAttribute("mescommandes", unecommande.getTouteslesCommandes());
+          request.setAttribute("message","supprimer");
            destinationPage = "/Controleur?action=voirlescommandes";
       } 
       else if(AJOUTER_CLIENT.equals(actionName))
@@ -285,6 +289,7 @@ public class Controleur extends HttpServlet {
           
           c.ajouter(c);
           destinationPage="/index.jsp";
+          request.setAttribute("message","ajoutClient");
           
       } else if(SAUVER_VENDEUR.equals(actionName))
       {
@@ -311,6 +316,7 @@ public class Controleur extends HttpServlet {
           
           v.ajouter(v);
           destinationPage="/index.jsp";
+          request.setAttribute("message","ajoutVendeur");
           
       } 
       else if (CHOIX_COMMANDE.equals(actionName)) {

@@ -3,6 +3,10 @@
 
 <jsp:include page="includes/header.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script language=javascript>
 	function verif() {
 		if (document.getElementById("id").value == ""
@@ -22,6 +26,7 @@
 		if (obj.value != '')
 			alert('Erreur signalée  : "' + obj.value + "'");
 	}
+	
 </script>
 <body  onLoad="Chargement();">
 <section id="main" class="column">
@@ -48,7 +53,7 @@
 
 				<fieldset>
 					<label>Date d'embauche</label>
-					<input type="text" name="dateV" value="" id="dateV" />
+					<input type="text" name="dateV" value="" id="datepicker" READONLY />
 				</fieldset>
 
 				<fieldset>

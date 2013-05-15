@@ -14,6 +14,7 @@
   </script>
 <body  onLoad="Chargement();">
 <jsp:include page="includes/header.jsp" />
+<section id="main" class="column">
 	<article class="module width_3_quarter">
 		<header><h3 class="tabs_involved">Liste des articles de la commande ${numero}</h3>
   
@@ -51,5 +52,6 @@
 	</form>
 		</div>
 		</article>
+		</section>
 </body>
 </html>

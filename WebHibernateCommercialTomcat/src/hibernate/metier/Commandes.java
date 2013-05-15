@@ -232,7 +232,7 @@ public class Commandes implements java.io.Serializable {
 	// une modification ou une suppression
 	//***************************************************************
 	@SuppressWarnings("unchecked")
-	public Commandes  getUneCommande(String  num) throws ServiceHibernateException
+	public Commandes  getUneCommande(String  nume) throws ServiceHibernateException
 	{
 		
 		Commandes unecommande=null;
@@ -240,13 +240,16 @@ public class Commandes implements java.io.Serializable {
 	{
 			Session session = ServiceHibernate.currentSession();    
 	    //On passe une requête SQL 
-		 Query query  =  session.createQuery(" FROM Commandes AS c  where c.noCommand = ?").setString(0, num);	 
+			nume = nume.replace(" ","");
+		int num = Integer.parseInt(nume);
+		 Query query  =  session.createQuery(" FROM Commandes AS c  where c.noCommand = ?").setInteger(0, num);	 
 		// Solution pour récupérer une ligne, il faut passer par un itérateur
 		
 		List<Commandes>  mescdes =  query.list();
 		// on vérifie qu'une commande existe
 		if ( mescdes.size() >0 )
 			unecommande = mescdes.get(0);
+		
 	} 
 	catch (ServiceHibernateException ex) { 
 	    throw ex;

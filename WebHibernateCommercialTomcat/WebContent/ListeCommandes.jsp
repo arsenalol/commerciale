@@ -19,8 +19,19 @@
 </head>
 <body  onLoad="Chargement();">
 <jsp:include page="includes/header.jsp" />
+<section id="main" class="column">
+	<c:if test="${(message == 'supprimer')}">
+		<h4 class="alert_success">La commande a été supprimée</h4>
+		</c:if>
+		
+		<c:if test="${(message == 'modif')}">
+		<h4 class="alert_success">La modification a été prise en compte</h4>
+		</c:if>
 	<article class="module width_3_quarter">
-		<header><h3 class="tabs_involved">Liste des Commandes</h3>
+	
+
+		
+				<header><h3 class="tabs_involved">Liste des Commandes</h3>
 		
 		</header>
 		<div class="tab_container">
@@ -34,18 +45,18 @@
 		<thead>
 		<tr>
       <th><a href="javascript:checkAll(document.deleteForm.id)">Supprimer</a></th>
-      <th>Numéro </th>
-      <th>Nom Client</th>
+      <th>Action</th>
+      <th>Numero</th>
       <th>Nom Vendeur</th>
-      <th>Prenom Vendeur</th>
-      <th> Date Commande </th>
+      <th>Nom Client</th>
+      <th>Date Commande </th>
     </tr>
     </thead>
   <c:forEach  items="${mescommandes}"  var="item" >
    <tr>
     <td><input type="checkbox" name="id" value="${item[0]}"></td>
       <td><a href="Controleur?action=modifierCommande&id=${item[0]}">Modifier</a></td>
-       <td>${item[0]}</td>
+      <td>${item[0]}</td>
       <td>${item[1]}</td>
        <td>${item[2]}</td>
       <td>
@@ -66,5 +77,6 @@
 	</form>
 		</div>
 		</article>
+		</section>
 </body>
 </html>
